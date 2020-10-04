@@ -56,6 +56,7 @@ wraps_qty = 0
 honeychilli_qty = 0
 coke_qty = 0
 icescream_qty = 0
+tea_qty = 0
 class Toplevel1:
     
     def __init__(self, top=None):
@@ -76,6 +77,7 @@ class Toplevel1:
                    pizza_qty = 0
                    coke_qty = 0
                    icescream_qty = 0
+                   tea_qty = 0
                    showinfo("Reset all Items", "All Items Reset!!")
                    self.Label4.config(text="0")
                    self.Label3.config(text="0")
@@ -86,7 +88,7 @@ class Toplevel1:
                    self.Label11.config(text='0')
                    self.Label12.config(text='0')
                    self.Label13.config(text='0')
-                    
+                   self.Label14.config(text='0')
                    
                     
                 
@@ -367,7 +369,36 @@ class Toplevel1:
             self.Label13.configure(foreground="#000000")
             self.Label13.configure(text=icescream_qty)
             
-        def tea
+        def teapos():
+            global tea_qty # inform funtion to use external variable `noodles_qty`
+
+            tea_qty = tea_qty + 1
+            if tea_qty<0:
+                showinfo("Error","Item cant be less than 0!!",icon='error')
+                tea_qty=0
+            print(tea_qty)
+            self.Label14 = tk.Label(top)
+            self.Label14.place(relx=0.2, rely=0.693, height=80, width=87)
+            self.Label14.configure(background="#FFC0CB")
+            self.Label14.configure(disabledforeground="#a3a3a3")
+            self.Label14.configure(foreground="#000000")
+            self.Label14.configure(text=tea_qty)
+            
+        def teaneg():
+            global tea_qty # inform funtion to use external variable `noodles_qty`
+
+            tea_qty = tea_qty - 1
+            if tea_qty<0:
+                showinfo("Error","Item cant be less than 0!!",icon='error')
+                tea_qty=0
+            print(tea_qty)
+            self.Label14 = tk.Label(top)
+            self.Label14.place(relx=0.2, rely=0.693, height=80, width=87)
+            self.Label14.configure(background="#FFC0CB")
+            self.Label14.configure(disabledforeground="#a3a3a3")
+            self.Label14.configure(foreground="#000000")
+            self.Label14.configure(text=tea_qty)
+            
             
             
             
@@ -594,6 +625,30 @@ class Toplevel1:
         self.Button2.configure(pady="0")
         self.Button2.configure(text='''IceCream-''',command=icecreamneg)
         
+        self.Button2 = tk.Button(top)
+        self.Button2.place(relx=0.25, rely=0.693, height=30, width=80)
+        self.Button2.configure(activebackground="#ececec")
+        self.Button2.configure(activeforeground="#000000")
+        self.Button2.configure(background="#d9d9d9")
+        self.Button2.configure(disabledforeground="#a3a3a3")
+        self.Button2.configure(foreground="#000000")
+        self.Button2.configure(highlightbackground="#d9d9d9")
+        self.Button2.configure(highlightcolor="black")
+        self.Button2.configure(pady="0")
+        self.Button2.configure(text='''Tea+''',command=teapos)
+        
+        self.Button2 = tk.Button(top)
+        self.Button2.place(relx=0.25, rely=0.740, height=30, width=80)
+        self.Button2.configure(activebackground="#ececec")
+        self.Button2.configure(activeforeground="#000000")
+        self.Button2.configure(background="#d9d9d9")
+        self.Button2.configure(disabledforeground="#a3a3a3")
+        self.Button2.configure(foreground="#000000")
+        self.Button2.configure(highlightbackground="#d9d9d9")
+        self.Button2.configure(highlightcolor="black")
+        self.Button2.configure(pady="0")
+        self.Button2.configure(text='''Tea-''',command=teaneg)
+        
         
        
        
@@ -636,7 +691,7 @@ class Toplevel1:
        
         
         
-         
+        
         
 
 if __name__ == '__main__':
